@@ -1,4 +1,4 @@
-package com.faustern.exercises.printable
+package com.faustern.exercises
 
 trait Printable[A] {
   def format(value: A): String
