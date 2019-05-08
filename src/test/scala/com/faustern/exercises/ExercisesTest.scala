@@ -5,6 +5,7 @@ import com.faustern.exercises.PrintableInstances._
 import com.faustern.exercises.PrintableSyntax._
 import com.faustern.exercises.CatInstances._
 import com.faustern.exercises.MonoidInstances._
+import com.faustern.exercises.MonoidInstances_._
 import com.faustern.exercises.SemigroupInstances._
 import com.faustern.exercises.MonoidRules._
 import org.scalatest._
@@ -68,5 +69,13 @@ class ExercisesTest extends FlatSpec with Matchers {
     identityLaw(Set(1))(setSymDiffMonoid) should be(true)
 
     setIntersectSemigroup.combine(Set("1", "2"), Set("2", "3")) should be (Set("2"))
+  }
+
+  "SuperAdder" should "work correctly" in {
+    SuperAdder.add(Stream.from(1).take(12).toList) should be (78)
+
+    SuperAdder.add(List(Some(1), Some(2), None, Some(3))) should be (Some(6))
+
+    SuperAdder.add(List(new Order(1, 2), new Order(2, 1))) should be (new Order(3, 3))
   }
 }
